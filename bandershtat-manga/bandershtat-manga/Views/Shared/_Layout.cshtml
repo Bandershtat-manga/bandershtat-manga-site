@@ -18,7 +18,13 @@
                 text-align: center;
                 color: white;
                 padding: 5%">
-        <h1>Бандерштат</h1>
+        <h1 style="background-color: red;
+                   border-radius: 21px;
+                   width: 30%;
+                   margin: auto;
+                   padding: 2%">
+            Бандерштат
+        </h1>
     </div>
 
     <header>
@@ -58,9 +64,11 @@
 
                 <button type="button" class="btn btn-danger">Відео</button>
 
-                <form method="post" action="@Url.Action("Search", "Home")">
+                <form method="post" action="@Url.Action("Search", "Home")" style="background-color: #404040; color: white; width: 20%">
                     <input type="text" name="query" placeholder="Пошук..." />
-                    <button type="submit">Пошук</button>
+                    <button type="submit" style="background-color: #404040; width: 50px;">
+                        <img src="https://imagizer.imageshack.com/img923/117/5zGQDw.png" style="width: 20px; height: 20px;"/>
+                    </button>
                 </form>
             </div>
         </nav>

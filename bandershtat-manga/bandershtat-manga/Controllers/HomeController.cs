@@ -34,16 +34,32 @@ namespace bandershtat_manga.Controllers
 
         public IActionResult Search(string query)
         {
-            // Ваш логіка пошуку з використанням query
+            // Отримайте дані з бази даних (наприклад, жанри)
+            var genres = _context.Ganrs.ToList();
+
+            // Створіть SelectList
+            SelectList genreList = new SelectList(genres, "Id", "Name");
+
+            // Помістіть SelectList в ViewBag
+            ViewBag.GenreDropdownList = genreList;
 
             // Приклад: якщо вам потрібно виконати пошук у моделі Manga
-            var searchResults = _context.Mangas.Where(m => m.Na.Contains(query)).ToList();
+            var searchResults = _context.Mangas.Where(m => m.Name.Contains(query)).ToList();
 
             return View("SearchResults", searchResults);
         }
 
         public IActionResult Privacy()
         {
+            // Отримайте дані з бази даних (наприклад, жанри)
+            var genres = _context.Ganrs.ToList();
+
+            // Створіть SelectList
+            SelectList genreList = new SelectList(genres, "Id", "Name");
+
+            // Помістіть SelectList в ViewBag
+            ViewBag.GenreDropdownList = genreList;
+
             return View();
         }
 
