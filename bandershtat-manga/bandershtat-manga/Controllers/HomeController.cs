@@ -32,6 +32,16 @@ namespace bandershtat_manga.Controllers
             return View();
         }
 
+        public IActionResult Search(string query)
+        {
+            // Ваш логіка пошуку з використанням query
+
+            // Приклад: якщо вам потрібно виконати пошук у моделі Manga
+            var searchResults = _context.Mangas.Where(m => m.Na.Contains(query)).ToList();
+
+            return View("SearchResults", searchResults);
+        }
+
         public IActionResult Privacy()
         {
             return View();

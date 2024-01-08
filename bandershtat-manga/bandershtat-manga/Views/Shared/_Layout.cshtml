@@ -56,7 +56,12 @@
                     </ul>
                 </div>
 
+                <button type="button" class="btn btn-danger">Відео</button>
 
+                <form method="post" action="@Url.Action("Search", "Home")">
+                    <input type="text" name="query" placeholder="Пошук..." />
+                    <button type="submit">Пошук</button>
+                </form>
             </div>
         </nav>
     </header>
