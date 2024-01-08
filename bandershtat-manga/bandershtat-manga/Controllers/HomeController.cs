@@ -1,5 +1,8 @@
 ﻿using bandershtat_manga.Models;
+using DataAcess;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace bandershtat_manga.Controllers
@@ -7,14 +10,25 @@ namespace bandershtat_manga.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly MangaDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MangaDbContext mangaDb)
         {
             _logger = logger;
+            _context = mangaDb;
         }
 
         public IActionResult Index()
         {
+            // Отримайте дані з бази даних (наприклад, жанри)
+            var genres = _context.Ganrs.ToList();
+
+            // Створіть SelectList
+            SelectList genreList = new SelectList(genres, "Id", "Name");
+
+            // Помістіть SelectList в ViewBag
+            ViewBag.GenreDropdownList = genreList;
+
             return View();
         }
 

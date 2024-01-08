@@ -50,6 +50,5 @@ namespace DataAcess.Entity
         [Required, MinLength(3)]
         public string Name { get; set; }
         public ICollection<MangaGanr> Mangas { get; set; } = new HashSet<MangaGanr>();
-        public ICollection<VideosGanr> Videoses { get; set; } = new HashSet<VideosGanr>();
     }
 }

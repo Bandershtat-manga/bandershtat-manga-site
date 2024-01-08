@@ -24,7 +24,39 @@
     <header>
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
-                
+                <!-- Manga Dropdown -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Манга
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" style="width: 900%">
+                        @if (ViewBag.GenreDropdownList != null)
+                        {
+                            var genres = (SelectList)ViewBag.GenreDropdownList;
+
+                            // Розбиваємо жанри на групи (наприклад, по 3 в кожній колонці)
+                            var groupedGenres = genres
+                            .Select((genre, index) => new { Genre = genre, Index = index })
+                            .GroupBy(item => item.Index / 4)
+                            .Select(group => group.Select(item => item.Genre));
+
+                            // Виводимо кожну групу у окремому рядку
+                            foreach (var group in groupedGenres)
+                            {
+                                <div class="row">
+                                    @foreach (var genre in group)
+                                    {
+                                    <div class="col">
+                                        <a class="dropdown-item" href="#">@genre.Text</a>
+                                    </div>
+                                    }
+                                </div>
+                            }
+                        }
+                    </ul>
+                </div>
+
+
             </div>
         </nav>
     </header>
