@@ -38,6 +38,8 @@ namespace bandershtat_manga
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

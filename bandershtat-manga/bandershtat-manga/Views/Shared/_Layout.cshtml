@@ -23,7 +23,7 @@
                    width: 30%;
                    margin: auto;
                    padding: 2%">
-            Бандерштат
+            Banderstadt
         </h1>
     </div>
 
@@ -62,7 +62,19 @@
                     </ul>
                 </div>
 
-                <button type="button" class="btn btn-danger">Відео</button>
+                <button class="btn btn-danger">Відео</button>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="btn btn-dark">Профіль</button>
+                }
+                else
+                {
+                    <form method="post" action="@Url.Action("Login", "Account")" style="border-radius: 21px; width: auto;">
+                        <button type="submit" class="btn btn-dark" style="background-color: #404040">Увійти</button>
+                    </form>
+                }
+
 
                 <form method="post" action="@Url.Action("Search", "Home")" style="background-color: #404040; color: white; width: 20%">
                     <input type="text" name="query" placeholder="Пошук..." />

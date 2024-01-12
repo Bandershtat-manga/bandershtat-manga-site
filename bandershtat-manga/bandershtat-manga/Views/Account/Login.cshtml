@@ -1,0 +1,19 @@
+﻿@model LoginViewModel
+
+<h1 style="color: white; text-align: center">Логін</h1>
+<form asp-action="Login" asp-controller="Account" method="post" class="bg-dark" style="color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="mb-3">
+        <label for="exampleInputUserName1" class="form-label">Нік</label>
+        <input type="text" class="form-control" id="exampleInputUserName1" name="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Пароль</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Увійти</button>
+    <div class="mb-3">
+        <a asp-action="Register" asp-controller="Account">Реєстрація</a>
+    </div>
+</form>
