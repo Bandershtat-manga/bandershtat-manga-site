@@ -66,7 +66,23 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <button class="btn btn-dark">Профіль</button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #404040">
+                            Профіль
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" style="text-align: center;">
+                            <li>
+                                <form style="border-radius: 21px; width: auto; padding: 1%">
+                                    <button type="submit" class="btn btn-dark" style="background-color: #404040">Налаштування</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form method="post" action="@Url.Action("Logout", "Account")" style="border-radius: 21px; width: auto; padding: 1%">
+                                    <button type="submit" class="btn btn-dark" style="background-color: #404040">Вийти</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 }
                 else
                 {
