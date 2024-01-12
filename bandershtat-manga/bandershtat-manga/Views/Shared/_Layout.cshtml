@@ -23,7 +23,7 @@
                    width: 30%;
                    margin: auto;
                    padding: 2%">
-            Бандерштат
+            Banderstadt
         </h1>
     </div>
 
@@ -62,7 +62,35 @@
                     </ul>
                 </div>
 
-                <button type="button" class="btn btn-danger">Відео</button>
+                <button class="btn btn-danger">Відео</button>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="btn-group" style="margin-left: 45%">
+                        <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #404040">
+                            Профіль
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" style="text-align: center;">
+                            <li>
+                                <form style="border-radius: 21px; width: auto; padding: 1%">
+                                    <button type="submit" class="btn btn-dark" style="background-color: #404040">Налаштування</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form method="post" action="@Url.Action("Logout", "Account")" style="border-radius: 21px; width: auto; padding: 1%">
+                                    <button type="submit" class="btn btn-dark" style="background-color: #404040">Вийти</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <form method="post" action="@Url.Action("Login", "Account")" style="border-radius: 21px; width: auto; margin-left: 45%">
+                        <button type="submit" class="btn btn-dark" style="background-color: #404040">Увійти</button>
+                    </form>
+                }
+
 
                 <form method="post" action="@Url.Action("Search", "Home")" style="background-color: #404040; color: white; width: 20%">
                     <input type="text" name="query" placeholder="Пошук..." />

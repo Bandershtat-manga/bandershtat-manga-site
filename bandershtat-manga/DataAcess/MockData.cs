@@ -28,7 +28,6 @@ namespace DataAcess
                 new Ganr() { Id = (int)Ganrs.Yaoi, Name = "Яой" },
                 new Ganr() { Id = (int)Ganrs.Harem, Name = "Гарем" },
                 new Ganr() { Id = (int)Ganrs.Shotacon, Name = "Шьотакон" },
-                new Ganr() { Id = (int)Ganrs.Lolicon, Name = "Лолікон" },
                 new Ganr() { Id = (int)Ganrs.Mecha, Name = "Меха" },
                 new Ganr() { Id = (int)Ganrs.Scifi, Name = "Наукова фантастика" },
                 new Ganr() { Id = (int)Ganrs.Cyberpunk, Name = "Кіберпанк" },

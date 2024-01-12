@@ -22,7 +22,6 @@ namespace DataAcess.Entity
         Yaoi,
         Harem,
         Shotacon,
-        Lolicon,
         Mecha,
         Scifi,
         Cyberpunk,

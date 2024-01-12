@@ -1,0 +1,27 @@
+﻿@model RegisterViewModel
+
+<h1 style="color: white; text-align: center">Реєстрація</h1>
+<form asp-action="Register" asp-controller="Account" method="post" class="bg-dark" style="color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="mb-3">
+        <label for="exampleInputUserName1" class="form-label">Нік</label>
+        <input type="text" class="form-control" id="exampleInputUserName1" name="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" name="Email" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Пароль</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputConfirmPassword1" class="form-label">Підтвердити пароль</label>
+        <input type="password" class="form-control" id="exampleInputConfirmPassword1" name="ConfirmPassword">
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Зареєструватися</button>
+</form>
