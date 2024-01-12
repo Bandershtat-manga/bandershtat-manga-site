@@ -8,25 +8,79 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/bandershtat_manga.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="bg-dark">
 
     @Html.Partial("18PlusWarning")
 
+    <div style="background-image: url(https://imagizer.imageshack.com/img922/1079/1ABk9p.jpg); 
+                height: 20%; 
+                width: 100%;
+                text-align: center;
+                color: white;
+                padding: 5%">
+        <h1 style="background-color: red;
+                   border-radius: 21px;
+                   width: 30%;
+                   margin: auto;
+                   padding: 2%">
+            Бандерштат
+        </h1>
+    </div>
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
-                
+                <!-- Manga Dropdown -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Манга
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" style="width: 900%">
+                        @if (ViewBag.GenreDropdownList != null)
+                        {
+                            var genres = (SelectList)ViewBag.GenreDropdownList;
+
+                            // Розбиваємо жанри на групи (наприклад, по 3 в кожній колонці)
+                            var groupedGenres = genres
+                            .Select((genre, index) => new { Genre = genre, Index = index })
+                            .GroupBy(item => item.Index / 4)
+                            .Select(group => group.Select(item => item.Genre));
+
+                            // Виводимо кожну групу у окремому рядку
+                            foreach (var group in groupedGenres)
+                            {
+                                <div class="row">
+                                    @foreach (var genre in group)
+                                    {
+                                    <div class="col">
+                                        <a class="dropdown-item" href="#">@genre.Text</a>
+                                    </div>
+                                    }
+                                </div>
+                            }
+                        }
+                    </ul>
+                </div>
+
+                <button type="button" class="btn btn-danger">Відео</button>
+
+                <form method="post" action="@Url.Action("Search", "Home")" style="background-color: #404040; color: white; width: 20%">
+                    <input type="text" name="query" placeholder="Пошук..." />
+                    <button type="submit" style="background-color: #404040; width: 50px;">
+                        <img src="https://imagizer.imageshack.com/img923/117/5zGQDw.png" style="width: 20px; height: 20px;"/>
+                    </button>
+                </form>
             </div>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container bg-dark">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-dark">
         <div class="container">
             &copy; 2024 - bandershtat_manga - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

@@ -1,0 +1,9 @@
+﻿@model List<DataAcess.Entity.Manga>;
+
+<h2 style="color: white">Результати пошуку:</h2>
+
+@foreach (var manga in Model)
+{
+    <p>@manga.Name</p>
+    <!-- Виводьте інші важливі відомості про мангу -->
+}

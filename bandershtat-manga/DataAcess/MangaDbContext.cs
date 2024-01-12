@@ -39,19 +39,6 @@ namespace DataAcess
                 .WithMany(c => c.Mangas)
                 .HasForeignKey(sc => sc.GanrId);
 
-            modelBuilder.Entity<VideosGanr>()
-                .HasKey(sc => new { sc.VideosId, sc.GanrId });
-
-            modelBuilder.Entity<VideosGanr>()
-                .HasOne(sc => sc.Videoses)
-                .WithMany(s => s.Ganrs)
-                .HasForeignKey(sc => sc.VideosId);
-
-            modelBuilder.Entity<VideosGanr>()
-                .HasOne(sc => sc.Ganr)
-                .WithMany(c => c.Videoses)
-                .HasForeignKey(sc => sc.GanrId);
-
             modelBuilder.SeedGanrs();
             modelBuilder.SeedRoles();
         }

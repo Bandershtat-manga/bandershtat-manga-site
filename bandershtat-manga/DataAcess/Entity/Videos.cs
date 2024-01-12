@@ -10,7 +10,5 @@ namespace DataAcess.Entity
     {
         public int Id { get; set; }
         public string FileName { get; set; }
-
-        public ICollection<VideosGanr> Ganrs { get; set; } = new HashSet<VideosGanr>();
     }
 }
