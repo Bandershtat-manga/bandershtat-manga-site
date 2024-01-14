@@ -53,8 +53,8 @@ namespace DataAcess
         {
             modelBuilder.Entity<Roles>().HasData(new Roles[]
             {
-                new Roles() { Id = TypesD.Admin.ToString(), Name = "Адмін" },
-                new Roles() { Id = TypesD.Client.ToString(), Name = "Клієнт" },
+                new Roles() { Id = TypesD.Admin.ToString(), Name = "Admin" },
+                new Roles() { Id = TypesD.Client.ToString(), Name = "Client" },
             });
         }
     }

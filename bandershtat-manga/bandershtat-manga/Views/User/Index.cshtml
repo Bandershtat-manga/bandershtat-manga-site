@@ -1,0 +1,29 @@
+﻿@model List<DataAcess.Entity.User>
+@inject Microsoft.AspNetCore.Identity.UserManager<DataAcess.Entity.User> _userManager
+
+<h1 style="color: white">Список користувачів</h1>
+
+<table class="table" style="color: white">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Назва</th>
+            <th>Роль</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>
+                    @{
+                        var roles = await _userManager.GetRolesAsync(user);
+                        <text>@string.Join(", ", roles)</text>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

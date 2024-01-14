@@ -4,6 +4,7 @@ using DataAcess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAcess.Migrations
 {
     [DbContext(typeof(MangaDbContext))]
-    partial class MangaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240113110839_RemoveAdmin")]
+    partial class RemoveAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -492,14 +494,14 @@ namespace DataAcess.Migrations
                         new
                         {
                             Id = "Admin",
-                            ConcurrencyStamp = "1162034a-eabf-4cb5-bfe6-0530065334e3",
-                            Name = "Admin"
+                            ConcurrencyStamp = "f628aabe-5ea2-4846-b382-ba71382231c6",
+                            Name = "Адмін"
                         },
                         new
                         {
                             Id = "Client",
-                            ConcurrencyStamp = "2d268f3f-347e-4a10-99d8-68fb389bd508",
-                            Name = "Client"
+                            ConcurrencyStamp = "35a61f7c-d2d4-4136-b216-32264cf84660",
+                            Name = "Клієнт"
                         });
                 });
 
@@ -507,11 +509,10 @@ namespace DataAcess.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
+                    b.Property<string>("RolesId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("RolesId");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -588,13 +589,9 @@ namespace DataAcess.Migrations
 
             modelBuilder.Entity("DataAcess.Entity.User", b =>
                 {
-                    b.HasOne("DataAcess.Entity.Roles", "Role")
+                    b.HasOne("DataAcess.Entity.Roles", null)
                         .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
+                        .HasForeignKey("RolesId");
                 });
 
             modelBuilder.Entity("DataAcess.Entity.Ganr", b =>

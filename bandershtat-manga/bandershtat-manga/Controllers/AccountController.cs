@@ -49,12 +49,13 @@ namespace bandershtat_manga.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Name, Email = model.Email };
+                var user = new User { UserName = model.Name, Email = model.Email};
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _userManager.AddToRoleAsync(user, "Client");
                     // Збереження в базу даних
                     _context.SaveChanges();
                     return RedirectToAction("Index", "Home");
