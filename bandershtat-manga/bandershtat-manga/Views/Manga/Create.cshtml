@@ -1,0 +1,79 @@
+﻿@model DataAcess.Entity.Manga
+@{
+    var allGenres = ViewBag.AllGenres as List<DataAcess.Entity.Ganr>; // Припустимо, що у вас є список всіх доступних жанрів
+}
+
+<h1 style="color: white">Create Manga</h1>
+
+<form asp-action="Create" method="post" style="color: white">
+    <div>
+        <label asp-for="Name">Назва:</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description">Опис:</label>
+        <input asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div>
+        <label asp-for="NamePerecladachs">Ім'я перекладачів:</label>
+        <input asp-for="NamePerecladachs" />
+        <span asp-validation-for="NamePerecladachs"></span>
+    </div>
+
+    <div>
+        <label asp-for="NameAutor">Ім'я автора:</label>
+        <input asp-for="NameAutor" />
+        <span asp-validation-for="NameAutor"></span>
+    </div>
+
+    <div>
+        <label asp-for="datePublish">Дата публікації:</label>
+        <input asp-for="datePublish" type="datetime" />
+        <span asp-validation-for="datePublish"></span>
+    </div>
+
+    <div>
+        <label asp-for="yearLimit">Вікові обмеження:</label>
+        <input asp-for="yearLimit" />
+        <span asp-validation-for="yearLimit"></span>
+    </div>
+
+    <div>
+        <label asp-for="yearCreate">Дата написання:</label>
+        <input asp-for="yearCreate" type="datetime" />
+        <span asp-validation-for="yearCreate"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Ganrs" class="control-label">Жанри</label>
+        <select asp-for="Ganrs" class="form-control" multiple="multiple" data-placeholder="Виберіть жанри" style="width: 100%;">
+            @foreach (var genre in allGenres)
+            {
+                <option value="@genre.Id">@genre.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Ganrs" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="files" class="control-label">Фото</label>
+        <input asp-for="files" type="file" class="form-control" multiple />
+        <span asp-validation-for="files" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+
+
+<script>
+    // Ініціалізація select2 після завантаження сторінки
+    $(document).ready(function () {
+        $("select").select2();
+    });
+</script>

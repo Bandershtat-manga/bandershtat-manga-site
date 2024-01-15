@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,8 @@ namespace DataAcess.Entity
         public string yearLimit { set; get; }
         public DateTime yearCreate { set; get; }
         public ICollection<MangaGanr> Ganrs { get; set; } = new HashSet<MangaGanr>();
-        public List<string> fileNames = new List<string>();
+        public List<IFormFile> files = new List<IFormFile>();
+        public List<string> fileName = new List<string>();
 
     }
 }

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<DataAcess.Entity.User> _userManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -63,6 +65,18 @@
                 </div>
 
                 <button class="btn btn-danger">Відео</button>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var user = await _userManager.GetUserAsync(User);
+
+                    if (await _userManager.IsInRoleAsync(user, "Admin"))
+                    {
+                        <form style="border-radius: 21px; width: auto; padding: 1%" a asp-action="Index" asp-controller="Admin">
+                            <button type="submit" class="btn btn-dark" style="background-color: #404040">Адмінка</button>
+                        </form>
+                    }
+                }
 
                 @if (User.Identity.IsAuthenticated)
                 {

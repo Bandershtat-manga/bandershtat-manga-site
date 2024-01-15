@@ -49,13 +49,5 @@ namespace DataAcess
             });
         }
 
-        public static void SeedRoles(this ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Roles>().HasData(new Roles[]
-            {
-                new Roles() { Id = TypesD.Admin.ToString(), Name = "Admin" },
-                new Roles() { Id = TypesD.Client.ToString(), Name = "Client" },
-            });
-        }
     }
 }

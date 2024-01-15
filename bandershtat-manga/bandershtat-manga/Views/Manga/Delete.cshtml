@@ -1,0 +1,14 @@
+﻿@model DataAcess.Entity.Manga
+
+<h1 style="color: white">Delete Manga</h1>
+
+<form asp-action="DeleteConfirmed" method="post" style="color: white">
+    <input type="hidden" asp-for="Id" />
+
+    <p>Are you sure you want to delete this manga?</p>
+
+    <div>
+        <button type="submit">Delete</button>
+        <a asp-action="Index">Cancel</a>
+    </div>
+</form>

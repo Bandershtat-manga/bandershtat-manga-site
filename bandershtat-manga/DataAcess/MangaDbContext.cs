@@ -41,7 +41,6 @@ namespace DataAcess
                 .HasForeignKey(sc => sc.GanrId);
 
             modelBuilder.SeedGanrs();
-            modelBuilder.SeedRoles();
         }
 
         public virtual DbSet<Manga> Mangas { get; set; }

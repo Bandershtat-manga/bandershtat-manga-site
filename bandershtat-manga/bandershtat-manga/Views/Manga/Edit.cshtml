@@ -1,0 +1,25 @@
+﻿@model DataAcess.Entity.Manga
+
+<h1 style="color: white">Edit Manga</h1>
+
+<form asp-action="Edit" method="post" style="color: white">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description">Description:</label>
+        <input asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <!-- Add other properties as needed -->
+
+    <div>
+        <button type="submit">Save Changes</button>
+    </div>
+</form>

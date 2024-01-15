@@ -44,7 +44,12 @@ namespace DataAcess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NamePerecladachs = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameAutor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    datePublish = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    yearLimit = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    yearCreate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,30 +147,6 @@ namespace DataAcess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VideosGanr",
-                columns: table => new
-                {
-                    VideosId = table.Column<int>(type: "int", nullable: false),
-                    GanrId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VideosGanr", x => new { x.VideosId, x.GanrId });
-                    table.ForeignKey(
-                        name: "FK_VideosGanr_Ganrs_GanrId",
-                        column: x => x.GanrId,
-                        principalTable: "Ganrs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_VideosGanr_Videoses_VideosId",
-                        column: x => x.VideosId,
-                        principalTable: "Videoses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
@@ -251,15 +232,6 @@ namespace DataAcess.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { "Admin", "27489479-5dde-4302-b354-65ae4a94e7da", "Roles", "Адмін", null },
-                    { "Client", "300d1719-bd40-400f-b347-732b9f0a7290", "Roles", "Клієнт", null }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Ganrs",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
@@ -277,26 +249,25 @@ namespace DataAcess.Migrations
                     { 11, "Яой" },
                     { 12, "Гарем" },
                     { 13, "Шьотакон" },
-                    { 14, "Лолікон" },
-                    { 15, "Меха" },
-                    { 16, "Наукова фантастика" },
-                    { 17, "Кіберпанк" },
-                    { 18, "Стімпанк" },
-                    { 19, "Апокаліпсис" },
-                    { 20, "Постапокаліпсикс" },
-                    { 21, "Фентезі" },
-                    { 22, "Хоррор" },
-                    { 23, "Готика" },
-                    { 24, "Вестерн" },
-                    { 25, "Пригоди" },
-                    { 26, "Школа" },
-                    { 27, "Бойовик" },
-                    { 28, "Детектив" },
-                    { 29, "Драма" },
-                    { 30, "Історія" },
-                    { 31, "Комедія" },
-                    { 32, "Романтика" },
-                    { 33, "Хентай" }
+                    { 14, "Меха" },
+                    { 15, "Наукова фантастика" },
+                    { 16, "Кіберпанк" },
+                    { 17, "Стімпанк" },
+                    { 18, "Апокаліпсис" },
+                    { 19, "Постапокаліпсикс" },
+                    { 20, "Фентезі" },
+                    { 21, "Хоррор" },
+                    { 22, "Готика" },
+                    { 23, "Вестерн" },
+                    { 24, "Пригоди" },
+                    { 25, "Школа" },
+                    { 26, "Бойовик" },
+                    { 27, "Детектив" },
+                    { 28, "Драма" },
+                    { 29, "Історія" },
+                    { 30, "Комедія" },
+                    { 31, "Романтика" },
+                    { 32, "Хентай" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -347,11 +318,6 @@ namespace DataAcess.Migrations
                 name: "IX_MangaGanr_GanrId",
                 table: "MangaGanr",
                 column: "GanrId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VideosGanr_GanrId",
-                table: "VideosGanr",
-                column: "GanrId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -375,19 +341,16 @@ namespace DataAcess.Migrations
                 name: "MangaGanr");
 
             migrationBuilder.DropTable(
-                name: "VideosGanr");
+                name: "Videoses");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Mangas");
-
-            migrationBuilder.DropTable(
                 name: "Ganrs");
 
             migrationBuilder.DropTable(
-                name: "Videoses");
+                name: "Mangas");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

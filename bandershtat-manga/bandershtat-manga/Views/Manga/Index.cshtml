@@ -1,0 +1,29 @@
+﻿@model List<DataAcess.Entity.Manga>
+
+<h1 style="color: white">Manga List</h1>
+
+<table class="table" style="color: white">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var manga in Model)
+        {
+            <tr>
+                <td>@manga.Id</td>
+                <td>@manga.Name</td>
+                <td>@manga.Description</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@manga.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@manga.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@manga.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

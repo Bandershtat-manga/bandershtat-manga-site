@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAcess.Migrations
 {
     [DbContext(typeof(MangaDbContext))]
-    [Migration("20240113110403_UpdateDB")]
-    partial class UpdateDB
+    [Migration("20240115134214_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -489,20 +489,6 @@ namespace DataAcess.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
 
                     b.HasDiscriminator().HasValue("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "Admin",
-                            ConcurrencyStamp = "6cf73b34-eff4-41a5-9adb-5317bebab340",
-                            Name = "Адмін"
-                        },
-                        new
-                        {
-                            Id = "Client",
-                            ConcurrencyStamp = "dc80d6aa-42df-44ec-be2a-c2f175802dda",
-                            Name = "Клієнт"
-                        });
                 });
 
             modelBuilder.Entity("DataAcess.Entity.User", b =>
@@ -515,21 +501,6 @@ namespace DataAcess.Migrations
                     b.HasIndex("RolesId");
 
                     b.HasDiscriminator().HasValue("User");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "adminId",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "82150d35-9eb7-46b1-9c4d-0cad3af2faae",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PasswordHash = "admin",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "aac106f6-c908-4dd3-9519-e3f739363718",
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("DataAcess.Entity.MangaGanr", b =>
